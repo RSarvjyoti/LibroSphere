@@ -1,0 +1,53 @@
+.store-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.filter-input{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-input input{
+    width: 300px;
+    padding: 5px 30px;
+    font-size: 18px;
+}
+label{
+    font-size: 30px;
+}
+.book-card{
+    height: 80vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 300px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.card img{
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+.card:hover{
+    transform: scale(1.05); 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 6px 16px; 
+}

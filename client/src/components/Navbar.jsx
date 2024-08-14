@@ -9,9 +9,9 @@ const Navbar = () => {
     <div className="nav container">
         <div className='logo'> <Link to= "/" ><h3> <span>L</span>ibro<span>S</span>phere</h3></Link> </div>
         <div className="links">
-            <div><Link to="/store">Store</Link></div>
             <div> <Link to="/">Home</Link></div>
-            <div><Link to="/board">Borad</Link></div>
+            <div><Link to="/store">Store</Link></div>
+            <div><Link to="/board">Board</Link></div>
         </div>
         <div className='group-btn'>
             <button className='signup'><Link to="/signup">Signup</Link></button>

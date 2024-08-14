@@ -1,0 +1,44 @@
+.board-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.board-container>div{
+    width: 50%;
+}
+.board-container form{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+}
+ form input {
+    padding: 5px 20px;
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.board-containerform button{
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 20px;
+    background-color: #ff8624;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 700;
+}
+.board-containerform button:hover{
+    border: 2px solid #ff8624;
+    color: #ff8624;
+    background: none;
+}
