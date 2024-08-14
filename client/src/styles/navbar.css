@@ -1,0 +1,58 @@
+.nav{
+    background-color: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50px;
+}
+.logo .group-btn{
+    width: 20%;
+}
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+.logo span {
+    color: #ff8624;
+}
+.links {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.links a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+.group-btn a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.group-btn button{
+    background: none;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.group-btn .signup {
+    background:#ff8624;
+}
+.group-btn .signup a {
+    color: #fff;
+}
+.group-btn .login {
+    margin-left: 10px;
+    border: 1px solid #ff8624;
+}
+.group-btn .login a {
+    color: #ff8624;
+}
+
+/* fdb069 */
+
+/* ff8624 */
