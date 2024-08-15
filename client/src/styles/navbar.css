@@ -50,6 +50,8 @@
 .group-btn .login {
     margin-left: 10px;
     border: 1px solid #ff8624;
+    color: #ff8624;
+    font-size: 18px;
 }
 .group-btn .login a {
     color: #ff8624;

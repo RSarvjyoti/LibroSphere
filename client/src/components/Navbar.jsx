@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/navbar.css"
+import { AuthContext } from '../utils/AuthContext';
 
 const Navbar = () => {
-    
+
+ const { isAuthenticated, logout } = useContext(AuthContext);
+ 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
     <div className="nav container">
@@ -15,7 +22,16 @@ const Navbar = () => {
         </div>
         <div className='group-btn'>
             <button className='signup'><Link to="/signup">Signup</Link></button>
-            <button className='login'><Link to="/login">Login</Link></button>
+            {/* <button className='login'><Link to="/login">Login</Link></button> */}
+
+            {
+              isAuthenticated ? (
+                <button className='login' onClick={handleLogout}>Logout</button>
+              ) : (
+                <button className='login' ><Link to="/login">Login</Link></button>
+              )
+            }
+
         </div>
     </div>
     </>

@@ -1,8 +1,11 @@
+const tokenBlockModel = require("../models/tokenBlock");
 const userModel = require("../models/userModel");
-const { hashPassword } = require("../utills/hashPassword");
+const { hashPassword, comparePassword } = require("../utills/hashPassword");
+const { generateToken } = require("../utills/jwtToken");
+
+require("dotenv").config();
 
 const signup = async (req, res) => {
-    console.log(req.body);
     const {username, email, password} = req.body;
     try{
 
@@ -24,19 +27,62 @@ const signup = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    try{
+    const { email, password } = req.body;
 
-    }catch(err) {
-        res.status(500).json({message : "Internal server error..."});
+    try {
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ message: "You don't have an account. Please sign up first." });
+        }
+
+        const isPasswordValid = await comparePassword(password, user.password);
+
+        if (isPasswordValid) {
+            try {
+                const payload = { email: user.email };
+                const token = await generateToken(payload, process.env.JWT_SECRET);
+                // console.log("Token => " + token);
+                return res.status(200).json({ token: token });
+            } catch (err) {
+                console.log(err);
+                return res.status(500).json({ message: "Error generating token" });
+            }
+        } else {
+            return res.status(400).json({ message: "Incorrect password or email" });
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Internal server error" });
     }
 }
 
 const logout = async (req, res) => {
-    try{
+    try {
+        const header = req.headers.authorization;
 
-    }catch(err) {
-        res.status(500).json({message : "Internal server error..."});
+        // Check if the authorization header is present
+        if (!header) {
+            return res.status(400).json({ message: "Token header is not present" });
+        }
+
+        // Extract the token from the header
+        const token = header.split(" ")[1];
+
+        // Check if the token exists
+        if (!token) {
+            return res.status(400).json({ message: "Token is not provided" });
+        }
+
+        // Block the token by adding it to the blocklist
+        await tokenBlockModel.create({ token });
+
+        return res.status(200).json({ message: "Logout successfully!" });
+    } catch (err) {
+        console.error("Logout Error:", err);
+        return res.status(500).json({ message: "Internal server error..." });
     }
-}
+};
+
 
 module.exports = {signup, login, logout};

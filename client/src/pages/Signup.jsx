@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaWindowClose } from "react-icons/fa";
 import '../styles/signup.css';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const url = 'http://localhost:7000/user/signup';
 
@@ -11,6 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
+  const nevigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,10 +33,13 @@ const Signup = () => {
       setUsername('');
       setEmail('');
       setPassword('');
-
+      nevigate('/login');
     }catch(err) {
       if (err.response && err.response.data) {
         setPopupMessage(err.response.data.message);
+        setUsername('');
+        setEmail('');
+        setPassword('');  
       } else {
         setPopupMessage("Internal server error...");
       }
@@ -57,6 +62,7 @@ const Signup = () => {
       <input type="password" placeholder='Enter Password...' value={password}  onChange={(e)=> setPassword(e.target.value)}  />
       
       <button type='submit'>Signup</button>
+      <Link to="/login">Login</Link>
      </form>
       </div>
 

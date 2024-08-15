@@ -5,6 +5,6 @@ const userRoutes = Router();
 
 userRoutes.post('/signup', signup);
 userRoutes.post('/login', login);
-userRoutes.post('/logout', logout);
+userRoutes.delete('/logout', logout);
 
 module.exports = userRoutes;
